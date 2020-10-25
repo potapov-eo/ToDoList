@@ -110,9 +110,18 @@ setTodolists([todolist,...todolists])
         setTasks({...tasks})
     }
 
+    function changeTodolistTitle(todoListID: string, newTitle: string) {
+     const  todoList = todolists.find(t=>t.id === todoListID)
+        if(todoList){
+            todoList.title = newTitle
+            setTodolists([...todolists])
+        }
+
+    }
+
     return (
         <div className="App">
-            <AddItemForm addItem={addTodolist }/>
+            <AddItemForm addItem={addTodolist}/>
             {
                 todolists.map(tl => {
                     let allTodoListTasks = tasks[tl.id]
@@ -136,7 +145,8 @@ setTodolists([todolist,...todolists])
                             changeStatus={changeStatus}
                             removeTodoList={removeTodoList}
                             filter={tl.filter}
-                            changeTaskTitle={changeTaskTitle}/>
+                            changeTaskTitle={changeTaskTitle}
+                            changeTodolistTitle={changeTodolistTitle}/>
 
                     )
                 })
