@@ -1,6 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {Button, Icon, IconButton, TextField} from "@material-ui/core";
 import {makeStyles} from '@material-ui/core/styles';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import SaveIcon from '@material-ui/icons/Save';
 import {AddBox, TextFields} from "@material-ui/icons";
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -61,7 +62,7 @@ export function AddItemForm(props: AddItemFormPropsType) {
             size="medium"
             color="primary"
             onClick={addTask}>
-            <AddBox/>
+            <AddCircleIcon/>
         </IconButton>
        {/* {error && <div className={"error-message"}>{error}</div>}*/}
     </div>
