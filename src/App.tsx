@@ -3,6 +3,25 @@ import './App.css';
 import {TaskType, Todolist} from './Todolist';
 import {v1} from "uuid";
 import {AddItemForm} from "./AddItemForm";
+import {AppBar, Button, IconButton} from "@material-ui/core";
+import Toolbar from '@material-ui/core/Toolbar';
+import MenuIcon from '@material-ui/icons/Menu';
+import Typography from '@material-ui/core/Typography';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            flexGrow: 1,
+        },
+        menuButton: {
+            marginRight: theme.spacing(2),
+        },
+        title: {
+            flexGrow: 1,
+        },
+    }),
+);
 
 export type FilterValueType = 'all' | 'active' | 'comleted'
 type TodolistType = {
@@ -118,9 +137,21 @@ setTodolists([todolist,...todolists])
         }
 
     }
-
+    const classes = useStyles();
     return (
+
         <div className="App">
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" className={classes.title}>
+                        News
+                    </Typography>
+                    <Button color="inherit">Login</Button>
+                </Toolbar>
+            </AppBar>
             <AddItemForm addItem={addTodolist}/>
             {
                 todolists.map(tl => {
