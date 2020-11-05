@@ -35,7 +35,7 @@ export function Todolist(props: PropsType) {
         props.changFilter('active', props.id)
     }
     const onCompletedClickHandler = () => {
-        props.changFilter('comleted', props.id)
+        props.changFilter('completed', props.id)
     }
     const removeTodoList = () => {
         props.removeTodoList(props.id)
@@ -97,8 +97,8 @@ export function Todolist(props: PropsType) {
                     className={props.filter === "active" ? "active" : ""}
                     onClick={onActiveClickHandler}>Active
             </Button>
-            <Button variant={props.filter === "comleted" ? "contained" : "outlined"} color="primary"
-                    className={props.filter === "comleted" ? "active" : ""}
+            <Button variant={props.filter === "completed" ? "contained" : "outlined"} color="primary"
+                    className={props.filter === "completed" ? "active" : ""}
                     onClick={onCompletedClickHandler}>Completed
             </Button>
         </div>

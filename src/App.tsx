@@ -23,13 +23,13 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export type FilterValueType = 'all' | 'active' | 'comleted'
-type TodolistType = {
+export type FilterValueType = 'all' | 'active' | 'completed'
+export type TodolistType = {
     id: string
     title: string
     filter: FilterValueType
 }
-type TaskSstateType = {
+export type TaskSstateType = {
     [key: string]: Array<TaskType>
 }
 
@@ -81,9 +81,7 @@ function App() {
         setTodolists(filteredTodoList)
         let deletedTasks = delete tasks[todoListID]
         setTasks({...tasks})
-        console.log(tasks)
-
-    }
+          }
 
     function changeStatus(taskID: string, isDone: boolean, todoListID: string) {
         const todolist = tasks[todoListID]
@@ -170,7 +168,7 @@ function App() {
                             if (tl.filter === 'active') {
                                 taskForTodoList = allTodoListTasks.filter(t => t.isDone === false)
                             }
-                            if (tl.filter === 'comleted') {
+                            if (tl.filter === 'completed') {
                                 taskForTodoList = allTodoListTasks.filter(t => t.isDone === true)
                             }
 
