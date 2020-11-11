@@ -12,6 +12,7 @@ export type AddTaskActionType = {
     type: 'ADD-TASK'
     title: string
     todoListID: string
+    id:string
 }
 export type changeTaskStatusActionType = {
     type: 'CHENG-TASK-STATUS'
@@ -40,7 +41,7 @@ export const tasksReducer = (state: TasksStateType, action: ActionType): TasksSt
         }
         case 'ADD-TASK': {
             const stateCopy = {...state}
-            let newTask: TaskType = {id: v1(), title: action.title, isDone: false}
+            let newTask: TaskType = {id:action.id, title: action.title, isDone: false}
             const tasks = state[action.todoListID]
             stateCopy[action.todoListID]  = [newTask, ...tasks]
             return stateCopy
@@ -90,11 +91,12 @@ export const removeTaskAC = (taskID: string, todoListID: string): RemoveTaskActi
         todoListID: todoListID
     }
 }
-export const addTaskAC = (title: string, todoListID: string): AddTaskActionType => {
+export const addTaskAC = ( title: string, todoListID: string): AddTaskActionType => {
     return {
         type: 'ADD-TASK',
         title: title,
-        todoListID: todoListID
+        todoListID: todoListID,
+        id:v1()
     }
 }
 export const changeTaskStatusAC = (taskID: string, isDone:boolean, todoListID: string): changeTaskStatusActionType => {
