@@ -31,13 +31,14 @@ test('correct todolist should be removed', () => {
 test('correct todolist should be added', () => {
 
     let newTodolistTitle = "New Todolist";
-    let action = AddTodolistAC(newTodolistTitle)
+    const todoListID1 = v1()
+    let action = AddTodolistAC(newTodolistTitle,todoListID1)
 
     const endState = todolistsReducer(startState, action)
 
     expect(endState.length).toBe(3);
-    expect(endState[2].title).toBe(newTodolistTitle);
-    expect(endState[2].filter).toBe("all");
+    expect(endState[0].title).toBe(newTodolistTitle);
+    expect(endState[0].filter).toBe("all");
 });
 
 test('correct todolist should change its name', () => {
